@@ -7,7 +7,7 @@
 #include <filesystem>
 #include <sstream>
 #include <iterator>
-//all of this might be needed idk I forgot
+//atleast need most of these
 
 using namespace std;
 
@@ -196,15 +196,17 @@ int main() {
     vector<int> shown;
     string filename = "save.txt";
     char useSave;
-    while (true)
+    char again = 'y';
+    while (tolower(again) == 'y')
     {
-        char again;
+        bool continueCheck = false;
         tst = Shuffler(tst);
         shown = {};
         //check for save
         if (FileExists(filename))
         {
-            while (true)
+            bool saveCheck = false;
+            while (!saveCheck)
             {
                 cout << "Save detected. Do you want to continue previous session? (Y/N) ";
                 cin >> useSave;
@@ -214,13 +216,17 @@ int main() {
                     vector<string> loadvec = Load(filename);
                     tst = GetBoard(loadvec);
                     shown = GetShown(loadvec);
-                    break;
+                    saveCheck = true;
                 }
                 else if (tolower(useSave) == 'n')
                 {
-                    //why does this not work with strings
+                    //does not work with string
                     remove("save.txt");
-                    break;
+                    saveCheck = true;
+                }
+                else
+                {
+                    cout << "Invalid input!\n";
                 }
             }
 
@@ -266,17 +272,21 @@ int main() {
                 break;
             }
         }
-        cout << "You win! Do you want to play another round? (Y/N): ";
         remove("save.txt");
-        cin >> again;
-        if (tolower(again) == 'y')
+        while (!continueCheck)
         {
-            continue;
+            cout << "You win! Do you want to play another round? (Y/N): ";
+            cin >> again;
+            if (tolower(again) == 'y' || tolower(again) == 'n')
+            {
+                continueCheck = true;
+            }
+            else
+            {
+                cout << "Invalid input!\n";
+            }
         }
-        else if (tolower(again) == 'n')
-        {
-            break;
-        }
+
     }
 
     return 0;
