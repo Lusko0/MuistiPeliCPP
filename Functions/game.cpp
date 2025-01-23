@@ -49,7 +49,7 @@ int Selector(std::vector<int> shown)
 
         while (check)
         {
-            std::cout << "\n" << "Select full coordinate (A1-D4): ";
+            std::cout << "\n" << "Select full coordinate (A1-D4) or Q to quit: ";
             std::cin >> coord;
             //makes rowNum the start of the chosen row
             switch (tolower(coord[0]))
@@ -70,6 +70,9 @@ int Selector(std::vector<int> shown)
                     rowNum = 12;
                     check = false;
                     break;
+                case 'q':
+                    //Value would be something like q or quit if the variable wasn't an integer oopsie
+                    return 99;
                 default:
                     std::cout << "\nBad row";
                     break;

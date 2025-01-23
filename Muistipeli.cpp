@@ -83,6 +83,10 @@ int main() {
             while (selected < 2)
             {
                 show = Selector(shown);
+                //Only gets value 99 if player wants to quit
+                if(show == 99){
+                    return 0;
+                }
                 shown.push_back(show);
                 std::cout << "\n";
                 Printer(tst, shown);
