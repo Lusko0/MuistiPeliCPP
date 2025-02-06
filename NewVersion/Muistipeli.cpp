@@ -47,10 +47,10 @@ int main() {
     char again = 'y';
     while (tolower(again) == 'y')
     {
+        //resets all variables
         bool continueCheck = false;
         gameBoard = Closer(gameBoard);
         gameBoard = Shuffler(gameBoard);
-        shown = {};
         //check for save
         if (FileExists(filename))
         {
@@ -58,6 +58,7 @@ int main() {
             while (!saveCheck)
             {
                 std::cout << "Save detected. Do you want to continue previous session? (Y/N) ";
+                //user input into string so it doesn't start spamming if inputting more than one character
                 std::cin >> useSave;
                 if (tolower(useSave[0]) == 'y')
                 {
@@ -70,8 +71,8 @@ int main() {
                 }
                 else if (tolower(useSave[0]) == 'n')
                 {
-                    //does not work with string
-                    remove("./saves/save.txt");
+                    //deletes the save file
+                    remove(filename.c_str());
                     saveCheck = true;
                 }
                 else
@@ -86,6 +87,7 @@ int main() {
         while (true)
         {
             int show;
+            //prints the board first on the first loop
             if (y == 0)
             {
                 Printer(gameBoard);
@@ -120,7 +122,7 @@ int main() {
                 std::cout << "\n";
                 selected++;
             }
-            //checks the coordinates and if they are not the same removes the two newest coordinates
+            //checks the coordinates and if they are not the same removes the two opened coordinates
             gameBoard = Checker(gameBoard);
             std::cout << "\n";
             Printer(gameBoard);
@@ -131,7 +133,7 @@ int main() {
                 break;
             }
         }
-        remove("./saves/save.txt");
+        remove(filename.c_str());
         while (!continueCheck)
         {
             std::cout << "You win! Do you want to play another round? (Y/N): ";

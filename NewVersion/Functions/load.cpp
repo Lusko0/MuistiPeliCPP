@@ -12,6 +12,7 @@ void Save(const std::string& filename, std::vector<char> charList, std::vector<i
     file.close();
 }
 
+//makes a vector of the files lines
 std::vector<std::string> Load(const std::string& filename){
     std::ifstream file(filename);
     std::vector<std::string> temp;
@@ -25,6 +26,7 @@ std::vector<std::string> Load(const std::string& filename){
     return temp;
 }
 
+//I don't get how this works but it does
 std::vector<int> GetShown(std::vector<std::string> temp){
     std::stringstream ss(temp[1]);
     std::istream_iterator<std::string> begin(ss);

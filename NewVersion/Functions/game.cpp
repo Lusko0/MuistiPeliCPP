@@ -12,6 +12,7 @@ class MemCard
         enum MemCardState CardState;
 };
 
+//creates cards without loading save file
 std::vector<MemCard> CreateCards()
 {
     std::vector<MemCard> cards;
@@ -27,6 +28,7 @@ std::vector<MemCard> CreateCards()
     return cards;
 }
 
+//after load
 std::vector<MemCard> CreateCards(std::vector<char> characters, std::vector<int> cardS)
 {
     std::vector<MemCard> cards;
@@ -172,7 +174,7 @@ int Selector(std::vector<MemCard> cards)
     }
 }
 
-//checks if the two latest shown characters are the same
+//checks if the two opened characters are the same
 std::vector<MemCard> Checker(std::vector<MemCard> cardList)
 {
     int x = 0;
@@ -194,6 +196,7 @@ std::vector<MemCard> Checker(std::vector<MemCard> cardList)
         }
         y++;
     }
+    //if the cards are the same changes them to shown if they aren't closes them
     if (cardList[x].CardChar == cardList[y].CardChar)
     {
         cardList[x].CardState = Shown;
@@ -221,6 +224,7 @@ bool WinCheck(std::vector<MemCard> cardList)
     return true;
 }
 
+//creates a vector of characters with the cards chars
 std::vector<char> PrepSave(std::vector<MemCard> cardList)
 {
     std::vector<char> charList;
@@ -231,6 +235,7 @@ std::vector<char> PrepSave(std::vector<MemCard> cardList)
     return charList;
 }
 
+//creates an integer vector for each card with 2 being shown and 1 being closed. could also be changed to boolean i guess
 std::vector<int> PrepSave(std::vector<MemCard> cardList, int x)
 {
     std::vector<int> intList;
