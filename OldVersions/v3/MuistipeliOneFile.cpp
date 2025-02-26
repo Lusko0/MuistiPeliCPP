@@ -9,7 +9,6 @@
 #include <iterator>
 //atleast need most of these
 
-//Save/Load stuff probably subpar horrendously bad code
 //Turns vectors into strings to save into a file
 void Save(const std::string& filename, std::vector<char> charList, std::vector<int> showList){
     std::string board(charList.begin(), charList.end());

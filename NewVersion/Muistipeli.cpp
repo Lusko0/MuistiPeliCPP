@@ -71,7 +71,7 @@ int main() {
                 }
                 else if (tolower(useSave[0]) == 'n')
                 {
-                    //deletes the save file
+                    //deletes the save file. has c_str because remove needs char* arg and doesn't work with regular string
                     remove(filename.c_str());
                     saveCheck = true;
                 }

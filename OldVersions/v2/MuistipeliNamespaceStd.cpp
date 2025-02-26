@@ -11,7 +11,6 @@
 
 using namespace std;
 
-//Save/Load stuff probably subpar horrendously bad code
 //Turns vectors into strings to save into a file
 void Save(const string& filename, vector<char> charList, vector<int> showList){
     string board(charList.begin(), charList.end());
